@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { utilService } from './util.service.js'
 
 const STORAGE_RATE = 'rate_db'
 const STORAGE_MARKETPRICE = 'marketprice_db'
@@ -6,10 +7,11 @@ const STORAGE_AVGBLOCKSIZE = 'avgblocksize_db'
 
 async function getRate(amount) {
     try {
-        if (localStorage.getItem(STORAGE_RATE)) return JSON.parse(localStorage.getItem(STORAGE_RATE))
-        const rate = await (axios.get('https://blockchain.info/tobtc?currency=USD&value=1').data)
-        localStorage.setItem(STORAGE_RATE, JSON.stringify(rate))
-        return rate
+        let rate = utilService.loadFromStorage(STORAGE_RATE)
+        if (rate) return rate
+        rate = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${amount}`)
+        utilService.saveToStorage(STORAGE_RATE, rate)
+        return rate.data
     } catch (err) {
         console.log(err)
         throw err
@@ -18,10 +20,11 @@ async function getRate(amount) {
 
 async function getMarketPriceHistory() {
     try {
-        if (localStorage.getItem(STORAGE_MARKETPRICE)) return JSON.parse(localStorage.getItem(STORAGE_MARKETPRICE))
-        const marketPriceHistory = await (axios.get('https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true').data)
-        localStorage.setItem(STORAGE_MARKETPRICE, JSON.stringify(marketPriceHistory))
-        return marketPriceHistory
+        let marketPriceHistory = utilService.loadFromStorage(STORAGE_MARKETPRICE)
+        if (marketPriceHistory) return marketPriceHistory
+        marketPriceHistory = await (axios.get('https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'))
+        utilService.saveToStorage(STORAGE_MARKETPRICE, marketPriceHistory)
+        return marketPriceHistory.data
     } catch (err) {
         console.log(err)
         throw err
@@ -30,10 +33,11 @@ async function getMarketPriceHistory() {
 
 async function getAvgBlockSize() {
     try {
-        if(localStorage.getItem(STORAGE_AVGBLOCKSIZE)) return JSON.parse(localStorage.getItem(STORAGE_AVGBLOCKSIZE))
-        const avgBlockSize = await (axios.get('https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true').data)
-        localStorage.setItem(STORAGE_AVGBLOCKSIZE, JSON.stringify(avgBlockSize))
-        return avgBlockSize
+        let avgBlockSize = utilService.loadFromStorage(STORAGE_AVGBLOCKSIZE)
+        if(avgBlockSize) return avgBlockSize
+        avgBlockSize = await (axios.get('https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true').data)
+        utilService.saveToStorage(STORAGE_AVGBLOCKSIZE, avgBlockSize)
+        return avgBlockSize.data
     } catch (err) {
         console.log(err)
         throw err
