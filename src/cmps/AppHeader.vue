@@ -5,7 +5,8 @@
     <p>You have {{ user.balance }} coins</p>
     </section>
     <ul class="routes">
-
+        <RouterLink to="/contact"><li>Contacts</li></RouterLink>
+        <RouterLink to="/"><li>Home</li></RouterLink>
     </ul>
   </header>
 </template>
