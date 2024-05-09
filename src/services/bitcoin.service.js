@@ -21,7 +21,7 @@ async function getRate(amount) {
 async function getMarketPriceHistory() {
     try {
         let marketPriceHistory = utilService.loadFromStorage(STORAGE_MARKETPRICE)
-        if (marketPriceHistory) return marketPriceHistory
+        if (marketPriceHistory) return marketPriceHistory.data
         marketPriceHistory = await (axios.get('https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'))
         utilService.saveToStorage(STORAGE_MARKETPRICE, marketPriceHistory)
         return marketPriceHistory.data
@@ -34,7 +34,7 @@ async function getMarketPriceHistory() {
 async function getAvgBlockSize() {
     try {
         let avgBlockSize = utilService.loadFromStorage(STORAGE_AVGBLOCKSIZE)
-        if(avgBlockSize) return avgBlockSize
+        if(avgBlockSize) return avgBlockSize.data
         avgBlockSize = await (axios.get('https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true').data)
         utilService.saveToStorage(STORAGE_AVGBLOCKSIZE, avgBlockSize)
         return avgBlockSize.data
