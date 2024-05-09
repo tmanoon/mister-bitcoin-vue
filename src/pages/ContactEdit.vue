@@ -1,5 +1,6 @@
 <template>
   <section class="contact-edit">
+    <RouterLink to="/contact"><button>Back</button></RouterLink>
     <form @submit.prevent="save">
       <label for="name">Name</label>
       <input
@@ -23,6 +24,8 @@
         placeholder="Contact's phone"
       />
       <button>Save</button>
+      <button v-if="contact._id" @click="onDelete()">Delete</button>
+      <button v-else @click="onCancel()">Cancel</button>
     </form>
   </section>
 </template>
@@ -34,6 +37,7 @@ export default {
   data() {
     return {
       contact: contactService.getEmptyContact(),
+      contacts: [],
     };
   },
   methods: {
@@ -46,12 +50,26 @@ export default {
         throw err;
       }
     },
+    async onDelete() {
+      try {
+        const idx = this.contacts.findIndex(_contact => _contact._id === this.contact._id);
+        this.contacts.splice(idx, 1);
+        await contactService.deleteContact(this.contact._id);
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    },
+    onCancel() {
+        this.contact = contactService.getEmptyContact()
+    }
   },
   async created() {
     try {
       if (!this.$route.params.id) return;
       const id = this.$route.params.id;
       this.contact = await contactService.getContactById(id);
+      this.contacts = await contactService.getContacts()
     } catch (err) {
       console.log(err);
       throw err;
