@@ -1,6 +1,7 @@
 <template>
   <section v-if="user" class=home-page>
     <h1>Hello, {{user.name}}</h1>
+    <p>Balance: {{user.balance}}</p>
     <p>{{user.rate}}</p>
   </section>
 </template>
@@ -16,8 +17,9 @@ export default {
   },
   async created() {
     try {
-      this.user = userService.getUser();
-      this.user.rate = await bitcoinService.getRate(this.user.balance);
+      const user = userService.getUser();
+      user.rate = await bitcoinService.getRate(user.balance);
+      this.user = user
     } catch (err) {
       console.log(err);
       throw err;
