@@ -1,32 +1,33 @@
 <template>
-<ul v-if="contacts" class="contact-list">
+  <ul v-if="contacts" class="contact-list">
     <li v-for="contact in contacts" :key="contact._id">
-        <h3>{{contact.name}}</h3>
-        <div class="user-actions">
-            <button>Delete</button>
-            <button>Details</button>
-        </div>
+      <h3>{{ contact.name }}</h3>
+      <div class="user-actions">
+        <button @click="onRemoveContact(contact._id)">Delete</button>
+        <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
+      </div>
     </li>
-</ul>
-
-"_id": "5a5664025c3abdad6f5e098c",
-        "name": "Lilly Conner",
-        "email": "lillyconner@renovize.com",
-        "phone": "+1 (842) 587-3812"
-  
+  </ul>
 </template>
 
 <script>
 export default {
-props: {
-        contacts: {
-            type: Array,
-            required: true,
-        },
+  props: {
+    contacts: {
+      type: Array,
+      required: true,
     },
-}
+  },
+  methods: {
+    onRemoveContact(id) {
+        this.$emit('remove', id)
+    },
+    onContactDetails(contact) {
+
+    }
+  }
+};
 </script>
 
 <style>
-
 </style>
