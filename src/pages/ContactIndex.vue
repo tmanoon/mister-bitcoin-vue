@@ -1,12 +1,12 @@
 <template>
   <section v-if="contacts" class="contact-index">
-    <ContactList :contacts="contacts" />
+    <ContactList @remove="removeContact" :contacts="contacts" />
   </section>
 </template>
 
 <script>
 import { contactService } from "../services/contact.service.js";
-import ContactList from '../cmps/ContactList.vue';
+import ContactList from "../cmps/ContactList.vue";
 
 export default {
   data() {
@@ -15,7 +15,19 @@ export default {
     };
   },
   components: {
-    ContactList
+    ContactList,
+  },
+  methods: {
+    async removeContact(id) {
+      try {
+        const idx = this.contacts.findIndex(contact => contact._id === id)
+        this.contacts.splice(idx, 1)
+        await contactService.deleteContact(id)
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    },
   },
   async created() {
     try {
