@@ -8,7 +8,7 @@ const STORAGE_AVGBLOCKSIZE = 'avgblocksize_db'
 async function getRate(amount) {
     try {
         let rate = utilService.loadFromStorage(STORAGE_RATE)
-        if (rate) return rate
+        if (rate) return rate.data
         rate = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${amount}`)
         utilService.saveToStorage(STORAGE_RATE, rate)
         return rate.data
