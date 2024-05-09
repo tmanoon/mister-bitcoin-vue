@@ -21,10 +21,17 @@ async function getRate(amount) {
 async function getMarketPriceHistory() {
     try {
         let marketPriceHistory = utilService.loadFromStorage(STORAGE_MARKETPRICE)
-        if (marketPriceHistory) return marketPriceHistory.data
+        if (marketPriceHistory) return marketPriceHistory
         marketPriceHistory = await (axios.get('https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'))
+        marketPriceHistory = marketPriceHistory.data.values
+        marketPriceHistory = marketPriceHistory.map(val => {
+            return {
+                date: new Date(val.x * 1000).toLocaleDateString("en-US"),
+                price: val.y
+            }
+        })
         utilService.saveToStorage(STORAGE_MARKETPRICE, marketPriceHistory)
-        return marketPriceHistory.data
+        return marketPriceHistory
     } catch (err) {
         console.log(err)
         throw err
