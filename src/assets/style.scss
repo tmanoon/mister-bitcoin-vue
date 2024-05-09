@@ -1,0 +1,21 @@
+@font-face {
+    font-family: poppins-bold;
+    src: url('./src/assets/fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: poppins;
+    src: url('./src/assets/fonts/Poppins-ExtraLight.ttf');
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: poppins, Tahoma;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
