@@ -5,6 +5,7 @@
       <div class="user-actions">
         <button @click="onRemoveContact(contact._id)">Delete</button>
         <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
+        <RouterLink :to="`/contact/edit/${contact._id}`"><button>Edit</button></RouterLink>
       </div>
     </li>
   </ul>
@@ -21,9 +22,6 @@ export default {
   methods: {
     onRemoveContact(id) {
         this.$emit('remove', id)
-    },
-    onContactDetails(contact) {
-
     }
   }
 };
