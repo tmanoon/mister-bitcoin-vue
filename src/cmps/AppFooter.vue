@@ -1,5 +1,7 @@
 <template>
-  <div>hi</div>
+  <footer>
+    <pre>© Created by Shoval Sabag | Coding academy, May 2024</pre>
+  </footer>
 </template>
 
 <script>
