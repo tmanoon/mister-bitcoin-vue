@@ -1,6 +1,10 @@
 <template>
   <ul v-if="contacts" class="contact-list">
     <li v-for="contact in contacts" :key="contact._id">
+    <img
+      :src="`https://robohash.org/${contact.name}?set=set3`"
+      :alt="`${contact.name} picture`"
+    />
       <h3>{{ contact.name }}</h3>
       <div class="user-actions">
         <button @click="onRemoveContact(contact._id)">Delete</button>
