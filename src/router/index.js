@@ -20,8 +20,12 @@ const routerOptions = {
       path: '/contact/:id',
       name: 'details',
       component: ContactDetails
+<<<<<<< HEAD
     },
 
+=======
+    }
+>>>>>>> ac7b1aeda4a60fa01a29d81abddef26cac762297
   ]
 }
 
