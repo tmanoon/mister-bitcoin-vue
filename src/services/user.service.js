@@ -9,5 +9,5 @@ function getUser() {
 }
 
 export const userService = {
-    getUser,
+    getUser
 }
