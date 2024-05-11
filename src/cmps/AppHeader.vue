@@ -4,8 +4,9 @@
       <p>Mister<span class="bit-txt">Bit</span>coin</p>
     </div>
     <section class="user">
-      <h3>{{ user.name }}</h3>
-      <p>| {{ user.balance }} coins</p>
+      <p>{{ user.name }}</p>
+      <span>・</span>
+      <p>{{ user.balance }} coins</p>
     </section>
     <ul class="routes">
       <RouterLink to="/contact"><li>Contacts</li></RouterLink><span>|</span>
@@ -39,7 +40,7 @@ export default {
   top: 0;
   left: 0;
   padding-inline: 20px;
-  padding-block: 1.5em;
+  padding-block: .7em;
 }
 
 .logo > * {
@@ -66,6 +67,6 @@ ul li:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
 }
 </style>
