@@ -1,8 +1,8 @@
 <template>
-  <section v-if="user" class=home-page>
-    <h1>Hello, {{user.name}}</h1>
-    <p>Balance: {{user.balance}}</p>
-    <p>{{user.rate}}</p>
+  <section v-if="user" class="home-page">
+    <h1>Hello, {{ user.name }}</h1>
+    <p><span class="balance"></span>{{ user.balance }}</p>
+    <p><span class="bitcoin"></span>{{ user.rate }}</p>
   </section>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     try {
       const user = userService.getUser();
       user.rate = await bitcoinService.getRate(user.balance);
-      this.user = user
+      this.user = user;
     } catch (err) {
       console.log(err);
       throw err;
@@ -29,4 +29,25 @@ export default {
 </script>
 
 <style>
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-block: 32.5%;
+  gap: 8px;
+}
+
+.balance::before,
+.bitcoin::before {
+  font-family: fa-s;
+}
+
+.balance::before {
+  content: "\f51e";
+}
+
+.bitcoin::before {
+  content: "\e0b4";
+}
 </style>
