@@ -20,5 +20,7 @@ export default {
 </template>
 
 <style>
-
+  .main-app {
+    padding-inline: 20px;
+  }
 </style>

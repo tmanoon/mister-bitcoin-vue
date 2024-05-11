@@ -8,6 +8,16 @@
     src: url('./src/assets/fonts/Poppins-ExtraLight.ttf');
 }
 
+@font-face {
+    font-family: fa-b;
+    src: url('./src/assets/fonts/fa-brands-400.ttf');
+}
+
+@font-face {
+    font-family:fa-s ;
+    src: url('./src/assets/fonts/fa-solid-900.ttf');
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -18,4 +28,8 @@
 a {
     text-decoration: none;
     color: #222;
+}
+
+ul {
+    list-style-type: none;
 }
