@@ -60,5 +60,4 @@ export default {
   padding-inline: 20px;
   gap: 35px;
 }
-
 </style>

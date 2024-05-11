@@ -1,12 +1,14 @@
 <template>
   <section class="contact-edit flex column">
-    <RouterLink to="/contact"><button class="back-btn">Back</button></RouterLink>
+    <RouterLink to="/contact"
+      ><button class="back-btn">Back</button></RouterLink
+    >
     <form @submit.prevent="save" class="flex column">
       <img
-    v-if="contact._id"
-      :src="`https://robohash.org/${contact.name}?set=set3`"
-      :alt="`${contact.name} picture`"
-    />
+        v-if="contact._id"
+        :src="`https://robohash.org/${contact.name}?set=set3`"
+        :alt="`${contact.name} picture`"
+      />
       <label for="name">Name</label>
       <input
         id="name"
@@ -29,9 +31,9 @@
         placeholder="Contact's phone"
       />
       <div class="buttons flex column">
-      <button>Save</button>
-      <button v-if="contact._id" @click="onDelete()">Delete</button>
-      <button type="button" v-else @click.stop="onCancel()">Cancel</button>
+        <button>Save</button>
+        <button v-if="contact._id" @click="onDelete()">Delete</button>
+        <button type="button" v-else @click.stop="onCancel()">Cancel</button>
       </div>
     </form>
   </section>
