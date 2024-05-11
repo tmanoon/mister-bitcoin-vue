@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="contacts" class="contact-list flex column">
+  <ul v-if="contacts" class="contact-list">
     <li v-for="contact in contacts" :key="contact._id">
       <ContactPreview :contact="contact" />
     </li>
@@ -28,4 +28,10 @@ export default {
 </script>
 
 <style>
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+}
+
 </style>

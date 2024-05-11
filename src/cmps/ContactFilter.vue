@@ -1,7 +1,7 @@
 <template>
   <form class="contact-filter">
     <label for="name">Name</label>
-    <input @input="onFilter" v-model="filterBy.term" type="text" />
+    <input id="name" @input="onFilter" v-model="filterBy.term" type="text" />
   </form>
 </template>
 
@@ -24,7 +24,24 @@ export default {
 .contact-filter {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 10px;
+  gap: 10px;
+  background-color: #0000000f;
+  width: max-content;
+
+  &, input {
+    border-radius: 7px;
+  }
+
+  input {
+    color: #222;
+    padding-block: 3px;
+    padding-inline: 7px;
+
+    &:focus {
+        outline: none;
+    }
+  }
 }
 </style>

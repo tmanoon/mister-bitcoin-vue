@@ -1,5 +1,5 @@
 <template>
-  <section v-if="contacts" class="contact-index">
+  <section v-if="contacts" class="contact-index flex column">
     <ContactFilter @filter="onFilter" />
     <ContactList @remove="removeContact" :contacts="contacts" />
   </section>
@@ -54,5 +54,7 @@ export default {
 <style>
 .contact-index {
   padding-block: 86.4px;
+  padding-inline: 20px;
+  gap: 35px;
 }
 </style>

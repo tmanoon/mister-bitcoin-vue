@@ -35,6 +35,7 @@ export default {
   align-items: center;
   gap: 1em;
   cursor: pointer;
+  background-color: #0000000f;
 }
 
 img {
@@ -64,7 +65,6 @@ img {
   text-align: center;
   text-decoration: none #000000 solid;
   text-decoration-thickness: auto;
-  position: relative;
   cursor: pointer;
   transform: rotate(-2deg);
   user-select: none;
