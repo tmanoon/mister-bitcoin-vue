@@ -1,6 +1,7 @@
 <template>
   <section v-if="user" class="home-page">
     <h1>Hello, {{ user.name }}</h1>
+    <p>Your current po</p>
     <p class="flex"><span class="balance"></span>{{ user.balance }}</p>
     <p class="flex"><span class="bitcoin"></span>{{ user.rate }}</p>
   </section>
