@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="contacts" class="contact-list">
+  <ul v-if="contacts" class="contact-list flex column">
     <li v-for="contact in contacts" :key="contact._id">
     <img
       :src="`https://robohash.org/${contact.name}?set=set3`"
@@ -32,4 +32,7 @@ export default {
 </script>
 
 <style>
+.contact-list {
+  
+}
 </style>

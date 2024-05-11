@@ -14,9 +14,10 @@ export default {
   footer {
     display: block;
     width: 100%;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
+    color: #fff;
   }
 
 pre {

@@ -1,8 +1,8 @@
 <template>
   <section v-if="user" class="home-page">
     <h1>Hello, {{ user.name }}</h1>
-    <p><span class="balance"></span>{{ user.balance }}</p>
-    <p><span class="bitcoin"></span>{{ user.rate }}</p>
+    <p class="flex"><span class="balance"></span>{{ user.balance }}</p>
+    <p class="flex"><span class="bitcoin"></span>{{ user.rate }}</p>
   </section>
 </template>
 
@@ -49,5 +49,9 @@ export default {
 
 .bitcoin::before {
   content: "\e0b4";
+}
+
+p.flex {
+  gap: 5px;
 }
 </style>
