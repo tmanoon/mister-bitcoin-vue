@@ -1,7 +1,7 @@
 <template>
   <section v-if="user" class="home-page">
     <h1>Hello, {{ user.name }}</h1>
-    <p>Your current po</p>
+    <p class="date">Updated to {{ date }} </p>
     <p class="flex"><span class="balance"></span>{{ user.balance }}</p>
     <p class="flex"><span class="bitcoin"></span>{{ user.rate }}</p>
   </section>
@@ -14,11 +14,13 @@ export default {
   data() {
     return {
       user: {},
+      date: null
     };
   },
   async created() {
     try {
       const user = userService.getUser();
+      this.date = new Date().toDateString()
       user.rate = await bitcoinService.getRate(user.balance);
       this.user = user;
     } catch (err) {
@@ -39,6 +41,11 @@ export default {
   gap: 8px;
 }
 
+.date {
+  font-size: .8em;
+  margin-block: 1em;
+}
+
 .balance::before,
 .bitcoin::before {
   font-family: fa-s;
@@ -53,6 +60,6 @@ export default {
 }
 
 p.flex {
-  gap: 5px;
+  gap: 8px;
 }
 </style>

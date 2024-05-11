@@ -22,5 +22,6 @@ export default {
 <style>
   .main-app {
     padding-inline: 20px;
+    background-color: rgb(190 141 255);
   }
 </style>

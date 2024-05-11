@@ -1,21 +1,14 @@
 <template>
   <ul v-if="contacts" class="contact-list flex column">
     <li v-for="contact in contacts" :key="contact._id">
-    <img
-      :src="`https://robohash.org/${contact.name}?set=set3`"
-      :alt="`${contact.name} picture`"
-    />
-      <h3>{{ contact.name }}</h3>
-      <div class="user-actions">
-        <button @click="onRemoveContact(contact._id)">Delete</button>
-        <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
-        <RouterLink :to="`/contact/edit/${contact._id}`"><button>Edit</button></RouterLink>
-      </div>
+      <ContactPreview :contact="contact" />
     </li>
   </ul>
 </template>
 
 <script>
+import ContactPreview from './ContactPreview.vue';
+
 export default {
   props: {
     contacts: {
@@ -23,16 +16,19 @@ export default {
       required: true,
     },
   },
+  components: {
+    ContactPreview
+  },
   methods: {
     onRemoveContact(id) {
-        this.$emit('remove', id)
-    }
-  }
+      this.$emit("remove", id);
+    },
+  },
 };
 </script>
 
 <style>
 .contact-list {
-  
+  background-color: rgb(255, 236, 141);
 }
 </style>
