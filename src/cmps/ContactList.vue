@@ -17,7 +17,7 @@ export default {
     },
   },
   components: {
-    ContactPreview
+    ContactPreview,
   },
   methods: {
     onRemoveContact(id) {
@@ -28,7 +28,4 @@ export default {
 </script>
 
 <style>
-  .contact-list {
-    padding-block: 86.4px;
-  }
 </style>
