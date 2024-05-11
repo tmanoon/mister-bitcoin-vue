@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-.contact-list {
-  background-color: rgb(255, 236, 141);
-}
+  .contact-list {
+    padding-block: 86.4px;
+  }
 </style>

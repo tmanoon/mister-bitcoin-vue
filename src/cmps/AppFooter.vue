@@ -25,6 +25,7 @@ pre {
   align-items: center;
   justify-content: center;
   background-color: lightblue;
+  padding-block: .4em;
 }
 
 </style>
