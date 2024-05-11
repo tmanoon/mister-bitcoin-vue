@@ -40,7 +40,8 @@ export default {
     padding-inline: 7px;
 
     &:focus {
-        outline: none;
+        outline: 2px lightblue solid;
+        transition: .2s;
     }
   }
 }

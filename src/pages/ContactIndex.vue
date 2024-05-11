@@ -1,5 +1,8 @@
 <template>
   <section v-if="contacts" class="contact-index flex column">
+    <RouterLink :to="`/contact/edit/`"
+      ><button class="add-contact">Add a contact</button></RouterLink
+    >
     <ContactFilter @filter="onFilter" />
     <ContactList @remove="removeContact" :contacts="contacts" />
   </section>
@@ -53,8 +56,9 @@ export default {
 
 <style>
 .contact-index {
-  padding-block: 86.4px;
+  margin-block: 35px;
   padding-inline: 20px;
   gap: 35px;
 }
+
 </style>

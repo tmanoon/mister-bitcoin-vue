@@ -40,9 +40,6 @@ export default {
   justify-content: space-between;
   background-color: lightblue;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   padding-inline: 20px;
   padding-block: 0.7em;
 }

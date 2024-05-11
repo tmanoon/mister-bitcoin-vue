@@ -20,8 +20,5 @@ export default {
 </template>
 
 <style>
-  .main-app {
-    background-color: rgb(190 141 255);
-    height: 100vh;
-  }
+
 </style>

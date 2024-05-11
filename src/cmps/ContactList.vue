@@ -1,7 +1,14 @@
 <template>
-  <ul v-if="contacts" class="contact-list">
+  <ul v-if="contacts" class="contact-list" @remove="onRemoveContact">
     <li v-for="contact in contacts" :key="contact._id">
       <ContactPreview :contact="contact" />
+            <div class="user-actions flex">
+        <button @click="onRemoveContact(contact._id)">Delete</button>
+        <RouterLink :to="`/contact/${contact._id}`"
+          ><button>Details</button></RouterLink>
+        <RouterLink :to="`/contact/edit/${contact._id}`"
+          ><button>Edit</button></RouterLink>
+      </div>
     </li>
   </ul>
 </template>
@@ -32,6 +39,17 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 35px;
+  margin-block-end: 35px;
+}
+
+.user-actions {
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+  padding-block-start: 20px;
+  background-color: #0000000f;
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
 }
 
 </style>

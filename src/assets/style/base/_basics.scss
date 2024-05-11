@@ -6,6 +6,10 @@
     color: #fff;
 }
 
+html {
+    background-color: rgb(190 141 255);
+}
+
 a {
     text-decoration: none;
     color: #222;
@@ -13,4 +17,42 @@ a {
 
 ul {
     list-style-type: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-color: #b358ce;
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: 0.55rem 1.45rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        border: 1px solid #000000;
+        bottom: 4px;
+        left: 4px;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+    }
 }

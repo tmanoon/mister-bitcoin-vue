@@ -1,8 +1,6 @@
 <template>
   <section class="statistics" v-if="chartData.labels && chartData.datasets">
-    <Bar id="my-chart-id" 
-    :options="chartOptions" 
-    :data="chartData" />
+    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
   </section>
 </template>
 
@@ -36,22 +34,23 @@ export default {
     return {
       chartData: {},
       chartOptions: {
-      responsive: true, // Add other chart options as needed
-    }
+        responsive: true, // Add other chart options as needed
+      },
     };
   },
   async created() {
     try {
-        const data = {}
-      //   const avgBlockSize = await bitcoinService.getAvgBlockSize();
-      const marketPriceHistory = await bitcoinService.getMarketPriceHistory()
-      const labels = marketPriceHistory.map(val => val.date).slice(0, 10);
-      const datasets = [ { data: marketPriceHistory.map(val => val.price).slice(0, 10) } ]
-      data.labels = labels
-      console.log(data.labels)
-      data.datasets = datasets
-      console.log(data.datasets)
-      this.chartData = data
+      const data = {};
+      const marketPriceHistory = await bitcoinService.getMarketPriceHistory();
+      const labels = marketPriceHistory.map((val) => val.date).slice(0, 10);
+      const datasets = [
+        { data: marketPriceHistory.map((val) => val.price).slice(0, 10) },
+      ];
+      data.labels = labels;
+      console.log(data.labels);
+      data.datasets = datasets;
+      console.log(data.datasets);
+      this.chartData = data;
     } catch (err) {
       console.log(err);
       throw err;
@@ -61,4 +60,7 @@ export default {
 </script>
 
 <style>
+.statistics {
+  margin-block: 60px;
+}
 </style>

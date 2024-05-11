@@ -13,11 +13,11 @@ export default {
 <style>
   footer {
     display: block;
-    width: 100%;
     position: fixed;
-    right: 0;
+    left: 0;
     bottom: 0;
-    color: #fff;
+    width: 100%;
+    z-index: 40;
   }
 
 pre {
