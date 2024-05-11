@@ -64,7 +64,7 @@ ul {
   gap: 8px;
 }
 
-ul li:hover {
+.routes li:hover {
   /* text-decoration: line-through; */
   transform: scale(0.8);
   transition: 0.4s;

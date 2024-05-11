@@ -2,19 +2,21 @@
   <ul v-if="contacts" class="contact-list" @remove="onRemoveContact">
     <li v-for="contact in contacts" :key="contact._id">
       <ContactPreview :contact="contact" />
-            <div class="user-actions flex">
+      <div class="user-actions flex">
         <button @click="onRemoveContact(contact._id)">Delete</button>
         <RouterLink :to="`/contact/${contact._id}`"
-          ><button>Details</button></RouterLink>
+          ><button>Details</button></RouterLink
+        >
         <RouterLink :to="`/contact/edit/${contact._id}`"
-          ><button>Edit</button></RouterLink>
+          ><button>Edit</button></RouterLink
+        >
       </div>
     </li>
   </ul>
 </template>
 
 <script>
-import ContactPreview from './ContactPreview.vue';
+import ContactPreview from "./ContactPreview.vue";
 
 export default {
   props: {
@@ -52,4 +54,8 @@ export default {
   border-end-start-radius: 10px;
 }
 
+.user-actions button:hover {
+  scale: 1.1;
+  transition: 0.4s;
+}
 </style>

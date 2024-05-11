@@ -14,6 +14,7 @@ export default {
   footer {
     display: block;
     position: fixed;
+    
     left: 0;
     bottom: 0;
     width: 100%;
@@ -26,6 +27,7 @@ pre {
   justify-content: center;
   background-color: lightblue;
   padding-block: .4em;
+  width: 100%;
 }
 
 </style>

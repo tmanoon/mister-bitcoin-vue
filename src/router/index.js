@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
+// import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from '../pages/HomePage.vue'
 import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
@@ -6,7 +7,8 @@ import StatisticsPage from '../pages/StatisticsPage.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
 
 const routerOptions = {
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',

@@ -37,7 +37,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-block: 25.5%;
+  margin-block: 20%;
   gap: 8px;
   color: #fff;
 }
