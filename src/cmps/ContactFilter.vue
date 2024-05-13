@@ -1,8 +1,8 @@
 <template>
-  <form class="contact-filter">
+  <div class="contact-filter">
     <label for="name">Name</label>
     <input id="name" @input="onFilter" v-model="filterBy.term" type="text" />
-  </form>
+  </div>
 </template>
 
 <script>

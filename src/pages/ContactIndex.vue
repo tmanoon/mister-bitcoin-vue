@@ -1,5 +1,5 @@
 <template>
-  <section v-if="contacts" class="contact-index flex column">
+  <section class="contact-index flex column">
     <RouterLink :to="`/contact/edit/`"
       ><button class="add-contact">Add a contact</button></RouterLink
     >
@@ -26,9 +26,9 @@ export default {
   methods: {
     async removeContact(id) {
       try {
-        const idx = this.contacts.findIndex((contact) => contact._id === id);
-        this.contacts.splice(idx, 1);
         await contactService.deleteContact(id);
+        const idx = this.contacts.findIndex(contact => contact._id === id);
+        this.contacts.splice(idx, 1);
       } catch (err) {
         console.log(err);
         throw err;
