@@ -11,14 +11,14 @@ function signup(username) {
         const cachedUser = utilService.loadFromStorage(USER_DB)
         if(cachedUser && cachedUser.username === username) return cachedUser
         const user = _getEmptyUser()
-        user.username = username
+        user.name = username
         utilService.saveToStorage(USER_DB, user)
         return user
 }
 
 function _getEmptyUser() {
     return {
-        username: '',
+        name: '',
         balance: 100,
         transactions: []
     }
