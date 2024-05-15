@@ -130,7 +130,6 @@ const _contacts = [
 
 async function getContacts(filterBy = {}) {
     let contacts = await storageService.query(CONTACT_DB)
-    console.log(contacts)
     if(!contacts?.length) {
         _saveContacts(_contacts)
         contacts = _contacts
