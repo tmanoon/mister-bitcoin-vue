@@ -5,7 +5,7 @@
         <p>Mister<span id="bit-txt">Bit</span>coin</p>
       </div>
     </RouterLink>
-    <section class="user">
+    <section v-if="user.username" class="user">
       <p>{{ user.name }}</p>
       <span>・</span>
       <p>{{ user.balance }} coins</p>
