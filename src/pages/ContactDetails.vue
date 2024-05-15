@@ -24,9 +24,8 @@ export default {
   },
   async created() {
     try {
-      this.selectedContact = await contactService.getContactById(
-        this.$route.params.id
-      );
+      const { id } = this.$route.params;
+      this.selectedContact = await contactService.getContactById(id);
       console.log;
     } catch (err) {
       console.log(err);
@@ -45,6 +44,7 @@ export default {
 
 .contact-details img {
   width: 205px;
+  margin-block-end: 1em;
 }
 
 .back-btn {
