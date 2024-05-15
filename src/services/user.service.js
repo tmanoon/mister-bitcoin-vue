@@ -1,18 +1,18 @@
 import { utilService } from "./util.service"
 
-const CONTACT_DB = 'contact_db'
+const USER_DB = 'user_db'
 
 function getUser() {
-    let user = utilService.loadFromStorage(CONTACT_DB) ? utilService.loadFromStorage(CONTACT_DB)
+    let user = utilService.loadFromStorage(USER_DB) ? utilService.loadFromStorage(USER_DB)
     : _getEmptyUser()
     return user
 }
 function signup(username) {
-        const cachedUser = utilService.loadFromStorage(CONTACT_DB)
+        const cachedUser = utilService.loadFromStorage(USER_DB)
         if(cachedUser && cachedUser.username === username) return cachedUser
         const user = _getEmptyUser()
         user.username = username
-        utilService.saveToStorage(CONTACT_DB, user)
+        utilService.saveToStorage(USER_DB, user)
         return user
 }
 
