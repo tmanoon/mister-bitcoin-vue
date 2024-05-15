@@ -107,7 +107,8 @@ form input {
 }
 
 .contact-edit img {
-  width: 205px;
+  width: 165px;
+  margin-block-end: 10px;
 }
 
 .contact-edit input {
