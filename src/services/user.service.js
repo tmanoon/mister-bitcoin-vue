@@ -1,14 +1,10 @@
 import { utilService } from "./util.service"
 
-const user = {
-    name: "Pooki Pikpooki",
-    balance: 100,
-    transactions: []
-}
-
 const CONTACT_DB = 'contact_db'
 
 function getUser() {
+    let user = utilService.loadFromStorage(CONTACT_DB) ? utilService.loadFromStorage(CONTACT_DB)
+    : _getEmptyUser()
     return user
 }
 function signup(username) {
