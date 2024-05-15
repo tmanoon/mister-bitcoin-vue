@@ -18,30 +18,11 @@ export default createStore({
                 state.contacts.splice(idx, 1)
             }
         },
-        saveContact(state, contact) {
-            const index = state.contacts.findIndex(c => c._id === contact._id)
-            if (index !== -1) {
-                state.contacts[index] = contact
-            } else {
-                state.contacts.push(contact)
-            }
-        }
     },
     actions: {
         async loadContacts({ commit }, filterBy) {
             const contacts = await contactService.query(filterBy)
             commit('setContacts', contacts)
-        },
-        async getById({ commit, state }, contactId) {
-            let contact = state.contacts.find(contact => contact._id === contactId)
-            // if (!contact) {
-            //     contact = await contactService.getById(id)
-            // }
-            return contact
-        },
-        async saveContact({ commit }, contact) {
-            const savedContact = await contactService.save(contact)
-            commit('saveContact', savedContact)
         },
         async deleteContact({ commit }, contactId) {
             await contactService.remove(contactId)
