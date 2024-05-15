@@ -20,12 +20,12 @@ export default createStore({
         },
     },
     actions: {
-        async loadContacts({ commit }, filterBy) {
-            const contacts = await contactService.query(filterBy)
+        async loadContacts({ commit }, { filterBy }) {
+            const contacts = await contactService.getContacts(filterBy)
             commit('setContacts', contacts)
         },
-        async deleteContact({ commit }, contactId) {
-            await contactService.remove(contactId)
+        async deleteContact({ commit }, { contactId }) {
+            await contactService.deleteContact(contactId)
             commit('removeContact', contactId)
         }
     },
