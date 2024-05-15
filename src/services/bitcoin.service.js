@@ -13,7 +13,7 @@ async function getRate(amount) {
         const { data: rate } = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${amount}`)
 
         utilService.saveToStorage(STORAGE_RATE, rate)
-        return rate.data
+        return rate
     } catch (err) {
         console.log(err)
         throw err
