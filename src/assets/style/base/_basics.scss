@@ -21,22 +21,19 @@ ul {
 
 button {
     cursor: pointer;
-    background-color: transparent;
-    border: none;
     background-color: #b358ce;
     border: 0 solid #e5e7eb;
     box-sizing: border-box;
     color: #ffffff;
     display: flex;
-    font-size: 1rem;
+    font-size: .65em;
     justify-content: center;
-    line-height: 1.75rem;
+    width: 8vw;
     padding: 0.55rem 1.45rem;
     position: relative;
     text-align: center;
     text-decoration: none #000000 solid;
     text-decoration-thickness: auto;
-    cursor: pointer;
     transform: rotate(-2deg);
     user-select: none;
     -webkit-user-select: none;
