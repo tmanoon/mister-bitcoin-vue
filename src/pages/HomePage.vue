@@ -3,7 +3,7 @@
     <h1>Hello, {{ user.name }}</h1>
     <p class="date">Updated to {{ date }}</p>
     <p class="flex"><span class="balance"></span>{{ user.balance }}</p>
-    <p class="flex"><span class="bitcoin"></span>{{ user.rate }}</p>
+    <p class="flex"><span class="bitcoin"></span>{{ rate }}</p>
   </section>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   async created() {
     try {
       this.user = userService.getUser();
-      this.rate = await bitcoinService.getRate(user.balance);
+      this.rate = await bitcoinService.getRate(this.user.balance);
     } catch (err) {
       console.log(err);
       throw err;
