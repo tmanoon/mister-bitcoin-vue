@@ -5,8 +5,8 @@
         <p>Mister<span id="bit-txt">Bit</span>coin</p>
       </div>
     </RouterLink>
-    <section v-if="user.username" class="user">
-      <p>{{ user.name }}</p>
+    <section v-if="user.name" class="user">
+      <p class="username">{{ user.name }}</p>
       <span>・</span>
       <p>{{ user.balance }} coins</p>
     </section>
@@ -23,14 +23,14 @@
 <script>
 import { userService } from "../services/user.service.js";
 export default {
-  data() {
-    return {
-      user: null,
-    };
-  },
-  created() {
-    this.user = userService.getUser();
-  },
+  computed: {
+      user() {
+        return this.$store.getters.user
+      }
+    },
+  // created() {
+  //   this.user = userService.getUser();
+  // },
 };
 </script>
 
@@ -42,6 +42,10 @@ export default {
   width: 100%;
   padding-inline: 20px;
   padding-block: 0.7em;
+}
+
+.username {
+  text-transform: capitalize;
 }
 
 .logo, .routes li, .routes span,

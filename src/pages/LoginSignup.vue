@@ -7,7 +7,7 @@
       <input
         id="username"
         type="text"
-        v-model="loggedInUser.username"
+        v-model="username"
         placeholder="Your username"
       />
       <button>Submit</button>
@@ -17,19 +17,20 @@
 
 <script>
 export default {
-  computed: {
-    loggedInUser() {
-      return this.$store.getters.user;
-    },
+  data() {
+    return {
+      username: null,
+    };
   },
   methods: {
     onSubmit() {
-      this.$store.dispatch("setUser", this.loggedInUser.username);
+      this.$store.dispatch({ type: "setUser", username: this.username });
       this.$router.push("/");
     },
   },
   created() {
-    if (this.loggedInUser.username) this.$router.push("/");
+    const user = this.$store.getters.user;
+    if (user.username) this.$router.push("/");
   },
 };
 </script>
@@ -42,7 +43,7 @@ export default {
   h1 {
     margin-block-start: 18vw;
   }
-  
+
   button {
     margin-block-start: 24px;
     width: 100%;
