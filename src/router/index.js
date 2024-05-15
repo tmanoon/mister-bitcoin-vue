@@ -5,6 +5,7 @@ import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import StatisticsPage from '../pages/StatisticsPage.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
+import LoginSignup from '../pages/LoginSignup.vue'
 
 const routerOptions = {
   // history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +35,12 @@ const routerOptions = {
       path: '/contact/edit/:id?',
       name: 'edit',
       component: ContactEdit
-    }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: LoginSignup
+    },
   ]
 }
 
