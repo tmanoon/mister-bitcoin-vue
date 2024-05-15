@@ -6,7 +6,7 @@ export default createStore({
     strict: true,
     state: {
         contacts: [],
-        loggedInUser: null
+        loggedInUser: userService.getUser()
     },
     mutations: {
         setContacts(state, contacts) {
@@ -18,15 +18,37 @@ export default createStore({
                 state.contacts.splice(idx, 1)
             }
         },
+        setUser(state, user) {
+            state.loggedInUser = user
+        }
     },
     actions: {
         async loadContacts({ commit }, { filterBy }) {
-            const contacts = await contactService.getContacts(filterBy)
-            commit('setContacts', contacts)
+            try {
+                const contacts = await contactService.getContacts(filterBy)
+                commit('setContacts', contacts)
+            } catch (err) {
+                console.log(err)
+                throw err
+            }
         },
         async deleteContact({ commit }, { contactId }) {
-            await contactService.deleteContact(contactId)
-            commit('removeContact', contactId)
+            try {
+                await contactService.deleteContact(contactId)
+                commit('removeContact', contactId)
+            } catch (err) {
+                console.log(err)
+                throw err
+            }
+        },
+        async setUser({ commit }, { username }) {
+            try {
+                const user = userService.signup(username)
+                commit('setUser', user)
+            } catch (err) {
+                console.log(err)
+                throw err
+            }
         }
     },
     getters: {
@@ -36,7 +58,7 @@ export default createStore({
         emptyContact() {
             return contactService.getEmptyContact()
         },
-        user(state){
+        user(state) {
             return state.loggedInUser
         }
     }
