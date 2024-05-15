@@ -6,7 +6,7 @@
     <form @submit.prevent="save" class="flex column">
       <img
         v-if="contact._id"
-        :src="`https://robohash.org/${contact.name}?set=set3`"
+        :src="`https://robohash.org/${contact._id}?set=set5`"
         :alt="`${contact.name} picture`"
       />
       <label for="name">Name</label>
@@ -32,7 +32,7 @@
       />
       <div class="buttons flex column">
         <button>Save</button>
-        <button v-if="contact._id" @click="onDelete()">Delete</button>
+        <button type="button" v-if="contact._id" @click="onDelete()">Delete</button>
         <button type="button" v-else @click.stop="onCancel()">Cancel</button>
       </div>
     </form>
@@ -46,14 +46,13 @@ export default {
   data() {
     return {
       contact: {},
-      contacts: [],
     };
   },
   methods: {
     async save() {
       try {
         await contactService.saveContact(this.contact);
-        this.$router.push("/contact");
+        this.$router.push('/contact');
       } catch (err) {
         console.log(err);
         throw err;
@@ -61,11 +60,8 @@ export default {
     },
     async onDelete() {
       try {
-        const idx = this.contacts.findIndex(
-          (_contact) => _contact._id === this.contact._id
-        );
-        this.contacts.splice(idx, 1);
         await contactService.deleteContact(this.contact._id);
+        this.$router.push('/contact')
       } catch (err) {
         console.log(err);
         throw err;
@@ -82,7 +78,6 @@ export default {
         this.contact = contactService.getEmptyContact();
       } else {
         this.contact = await contactService.getContactById(id);
-        this.contacts = await contactService.getContacts();
       }
     } catch (err) {
       console.log(err);

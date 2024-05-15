@@ -1,7 +1,7 @@
 <template>
     <section v-if="contact" class="contact-preview flex column">
       <img
-        :src="`https://robohash.org/${contact.name}?set=set3`"
+        :src="`https://robohash.org/${contact._id}?set=set5`"
         :alt="`${contact.name} picture`"/>
       <h3>{{ contact.name }}</h3>
     </section>

@@ -2,7 +2,7 @@
   <section class="contact-details flex column" v-if="selectedContact">
     <RouterLink to="/contact" class="back-btn"><button>Back</button></RouterLink>
     <img
-      :src="`https://robohash.org/${selectedContact.name}?set=set3`"
+      :src="`https://robohash.org/${selectedContact._id}?set=set5`"
       :alt="`${selectedContact.name} picture`"
     />
     <h3>Name:</h3>
