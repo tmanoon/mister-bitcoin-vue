@@ -9,6 +9,8 @@
       <p class="username">{{ user.name }}</p>
       <span>・</span>
       <p>{{ user.balance }} coins</p>
+      <span>・</span>
+      <p @click="onLogout" class="logout-btn">Logout</p>
     </section>
     <ul class="routes">
       <RouterLink to="/contact"><li>Contacts</li></RouterLink
@@ -21,13 +23,18 @@
 </template>
 
 <script>
-import { userService } from "../services/user.service.js";
 export default {
   computed: {
       user() {
         return this.$store.getters.user
       }
     },
+    methods: {
+      onLogout() {
+        localStorage.clear()
+        this.$router.push('/signup')
+      }
+    }
   // created() {
   //   this.user = userService.getUser();
   // },
@@ -46,6 +53,10 @@ export default {
 
 .username {
   text-transform: capitalize;
+}
+
+.logout-btn {
+  cursor: pointer;
 }
 
 .logo, .routes li, .routes span,
