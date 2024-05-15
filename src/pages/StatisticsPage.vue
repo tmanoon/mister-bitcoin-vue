@@ -34,7 +34,15 @@ export default {
     return {
       chartData: {},
       chartOptions: {
+        plugins: {
+            legend: { display: false }
+        },
         responsive: true, // Add other chart options as needed
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
       },
     };
   },
@@ -42,9 +50,9 @@ export default {
     try {
       const data = {};
       const marketPriceHistory = await bitcoinService.getMarketPriceHistory();
-      const labels = marketPriceHistory.map((val) => val.date).slice(0, 10);
+      const labels = marketPriceHistory.map(val => val.date).slice(0, 10);
       const datasets = [
-        { data: marketPriceHistory.map((val) => val.price).slice(0, 10) },
+        {borderWidth: 1, label: '', data: marketPriceHistory.map((val) => val.price).slice(0, 10) },
       ];
       data.labels = labels;
       console.log(data.labels);
@@ -62,5 +70,6 @@ export default {
 <style>
 .statistics {
   margin-block: 60px;
+  margin-inline: 20px;
 }
 </style>
