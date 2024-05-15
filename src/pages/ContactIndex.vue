@@ -9,26 +9,24 @@
 </template>
 
 <script>
-import { contactService } from "../services/contact.service.js";
+
 import ContactList from "../cmps/ContactList.vue";
 import ContactFilter from "../cmps/ContactFilter.vue";
 
 export default {
-  data() {
-    return {
-      contacts: [],
-    };
-  },
   components: {
     ContactList,
     ContactFilter,
   },
+  computed: {
+    contacts() {
+      return this.$store.getters.contacts;
+    },
+  },
   methods: {
     async removeContact(id) {
       try {
-        await contactService.deleteContact(id);
-        const idx = this.contacts.findIndex(contact => contact._id === id);
-        this.contacts.splice(idx, 1);
+        this.$store.dispatch({ type: "deleteContact", id });
       } catch (err) {
         console.log(err);
         throw err;
@@ -36,7 +34,7 @@ export default {
     },
     async onFilter(filterBy) {
       try {
-        this.contacts = await contactService.getContacts(filterBy);
+        this.$store.dispatch({ type: "loadContacts", filterBy });
       } catch (err) {
         console.log(err);
         throw err;
@@ -45,7 +43,7 @@ export default {
   },
   async created() {
     try {
-      this.contacts = await contactService.getContacts();
+      this.$store.dispatch({ type: "loadContacts" });
     } catch (err) {
       console.log(err);
       throw err;
