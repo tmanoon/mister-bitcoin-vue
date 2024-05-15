@@ -30,14 +30,14 @@ export default createStore({
         }
     },
     getters: {
-        getContacts(state) {
+        contacts(state) {
             return state.contacts
         },
-        getEmptyContact() {
+        emptyContact() {
             return contactService.getEmptyContact()
         },
-        getUser(state){
-            return userService.getUser()
+        user(state){
+            return state.loggedInUser
         }
     }
 })
