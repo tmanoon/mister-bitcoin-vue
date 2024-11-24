@@ -9,9 +9,9 @@ async function getRate(amount) {
     try {
         const cachedRate = utilService.loadFromStorage(STORAGE_RATE)
         if (cachedRate) return cachedRate
-
-        const { data: rate } = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${amount}`)
-
+        let rate
+        const { data } = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${amount}`)
+        rate = data
         utilService.saveToStorage(STORAGE_RATE, rate)
         return rate
     } catch (err) {
