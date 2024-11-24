@@ -47,7 +47,7 @@ export default {
 .user-actions {
   justify-content: space-between;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   padding-block-start: 20px;
   background-color: #0000000f;
   border-end-end-radius: 10px;
