@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { userService } from "../services/user.service.js";
+
 import { bitcoinService } from "../services/bitcoin.service.js";
 
 export default {
@@ -36,7 +36,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .home-page {
   display: flex;
   justify-content: center;
